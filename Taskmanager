@@ -1,0 +1,58 @@
+// Task array to store all tasks
+let tasks = [];
+
+// 1) Function to add a task and call a callback function
+function addTask(task, callback) {
+    tasks.push(task);
+    console.log(`Task "${task}" added.`);
+    callback(); // Call the provided callback function
+}
+
+// 2) Callback function to print all current tasks
+function printTasks() {
+    console.log("Current Tasks:");
+    tasks.forEach((task, index) => {
+        console.log(`${index + 1}. ${task}`);
+    });
+}
+
+// 3) Arrow function to remove a task by index (example of arrow and function expressions)
+const removeTask = (index) => {
+    if (index >= 0 && index < tasks.length) {
+        console.log(`Task "${tasks[index]}" removed.`);
+        tasks.splice(index, 1);
+    } else {
+        console.log("Invalid index.");
+    }
+};
+
+//4) Function to add multiple tasks using rest operator
+function addMultipleTasks(callback, ...newTasks) {
+    newTasks.forEach(task => tasks.push(task));
+    console.log(`${newTasks.length} tasks added.`);
+    callback(); 
+}
+
+// 5) Illustrating variable scopes
+let globalVar = "I am global"; 
+
+function showScopes() {
+    let localVar = "I am local"; 
+    console.log("Inside function:");
+    console.log(globalVar); 
+}
+
+console.log("=== Adding One Task ===");
+addTask("Complete assignment", printTasks);
+
+console.log("\n=== Adding Multiple Tasks ===");
+addMultipleTasks(printTasks, "Study JavaScript", "Review notes", "Do exercises");
+
+console.log("\n=== Removing Task at Index 1 ===");
+removeTask(1);
+printTasks();
+
+console.log("\n=== Variable Scope Demo ===");
+showScopes();
+console.log("Outside function:");
+console.log(globalVar);
