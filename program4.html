@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .error{
+            color: red;
+            font-size: x-large;
+        }
+    </style>
 </head>
 <body>
     <h2>Registration form </h2>
@@ -43,7 +49,7 @@
 }
 
 function validateEmail(email) {
-    const regex = /^[A-Za-z-0-9._%+-]+@[a-zA-Z0-9.-]+\[a-zA-Z]{2,}$/;
+    const regex = /^[A-Za-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (email.trim()==="") {
         return "Email cannot be emty";
     }
@@ -87,8 +93,9 @@ function validateForm() {
     const phoneError = validatePhone(phone);
 
     if (nameError === "Name is valid" && emailError === "Email is valid" && passwordError === "Password is valid" && phoneError === "Phone number is valid") {
-        return true;
+        return true;//allow form submission
     }
+    //display error messages
 
     document.getElementById("nameError").innerText = nameError === "Name is valid" ? "" : nameError;
     document.getElementById("emailError").innerText = emailError === "Email is valid" ? "" : emailError;
