@@ -6,24 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="inputvalue">
-    <button onclick="todolistcontent()">add task </button>
+    <input type="text"id="inputvalue">
+    <button onclick="todolistcontent()">add task</button>
     <ul id="listcontent"></ul>
     <script>
         function todolistcontent(){
             let textvalue=document.getElementById("inputvalue").value.trim();
-            if(textvalue ===" ")return;
-            let li=document.createElement("li");
-            li.textContent=textvalue;
-            document.getElementById("listcontent").appendChild(li);
-            let removebutton=document.createElement("button");
-            removebutton.textContent="remove";
-            removebutton.addEventListener("click",function(e){
-                li.remove();
-            })
-            li.appendChild(removebutton);
-
+            if(textvalue===" ")
+            return;
+        let li=document.createElement("li");
+        li.textContent=textvalue;
+        document.getElementById("listcontent").appendChild(li);
+        let removeBtn=document.createElement("button");
+        removeBtn.textContent="remove";
+        removeBtn.addEventListener("click",function(e){
+            li.remove();
+        })
+        li.appendChild(removeBtn);
         }
     </script>
+
 </body>
 </html>
